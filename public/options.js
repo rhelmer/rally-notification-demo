@@ -7,3 +7,8 @@ document.getElementById("notification").addEventListener("click", () => {
         priority: 2,
     }, () => console.debug("done:", chrome.runtime.lastError));
 });
+
+document.getElementById("badge").addEventListener("click", () => {
+    chrome.browserAction.setBadgeText({ text: "test" });
+    chrome.browserAction.onClicked.addListener((tab) => chrome.browserAction.setBadgeText({ text: "" }));
+});
